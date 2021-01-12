@@ -6,11 +6,14 @@
   "repository": "https://github.com/GR34SE/react-typescript-starter.git",
   "license": "MIT",
   "private": false,
+  "homepage": "http://villeiivonen.github.io/covid-19",
   "scripts": {
     "dev": "webpack-dev-server --mode development --env.development --open --hot",
     "build": "webpack --mode production --env.production --progress",
     "lint": "eslint './src/**/*.{ts,tsx}'",
-    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
+    "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@types/node": "13.13.39",
@@ -38,6 +41,7 @@
     "webpack-dev-server": "3.11.1"
   },
   "dependencies": {
+    "gh-pages": "^3.1.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-responsive-carousel": "^3.2.11"
