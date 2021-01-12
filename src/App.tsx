@@ -1,6 +1,6 @@
 import React from "react";
-import HelloWorld from "components/HelloWorld";
+import Carousel from "components/Carousel";
 
-const App: React.FC = () => <HelloWorld />;
+const App: React.FC = () => <Carousel />;
 
 export default App;
