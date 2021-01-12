@@ -1,6 +1,6 @@
 import React from "react";
-import Carousel from "components/Carousel";
+import CarouselContainer from "components/Carousel";
 
-const App: React.FC = () => <Carousel />;
+const App: React.FC = () => <CarouselContainer />;
 
 export default App;

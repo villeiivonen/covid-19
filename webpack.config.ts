@@ -24,7 +24,12 @@ const webpackConfig = (env): Configuration => ({
                     transpileOnly: true
                 },
                 exclude: /dist/
-            }
+            },
+            {test: /\.css$/, use: ["style-loader", "css-loader"]},
+            {test: /\.eot$/, use: "file-loader"},
+            {test: /\.ttf$/, use: "file-loader"},
+            {test: /\.woff$/, use: "file-loader"},
+            {test: /\.ts$/, use: "ts-loader"}
         ]
     },
     plugins: [
