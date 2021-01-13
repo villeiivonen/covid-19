@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-multi-carousel";
+import DailyInfections from "components/Cards/dailyInfections";
 import "react-multi-carousel/lib/styles.css";
 
 const CarouselContainer: React.FC = () => {
@@ -20,6 +21,7 @@ const CarouselContainer: React.FC = () => {
             partialVisibilityGutter: 30
         }
     };
+
     return (
         <Carousel
             responsive={responsive}
@@ -31,21 +33,9 @@ const CarouselContainer: React.FC = () => {
             minimumTouchDrag={80}
             partialVisible={false}
         >
-            <img
-                style={{width: "100%"}}
-                alt=""
-                src="https://images.unsplash.com/photo-1550223640-23097fc71cb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-            />
-            <img
-                style={{width: "100%"}}
-                alt=""
-                src="https://images.unsplash.com/photo-1550223640-23097fc71cb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-            />
-            <img
-                style={{width: "100%"}}
-                alt=""
-                src="https://images.unsplash.com/photo-1550223640-23097fc71cb2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
-            />
+            <DailyInfections />
+            <DailyInfections />
+            <DailyInfections />
         </Carousel>
     );
 };
