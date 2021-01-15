@@ -1,6 +1,6 @@
 import React from "react";
-import CarouselContainer from "components/Carousel";
+import CovidCounter from "components/Form";
 
-const App: React.FC = () => <CarouselContainer />;
+const App: React.FC = () => <CovidCounter />;
 
 export default App;
