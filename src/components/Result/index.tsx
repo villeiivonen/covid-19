@@ -28,6 +28,7 @@ const Result: React.FC<{
   selectedGender
 }) => {
   const latestUpdate = moment(municipalitiesInfectionsData.meta.timestamp).format("D.M.YYYY");
+
   const municipalitiesInfectionsQuery = (dataObj: MunicipalitiesInfectionsCumulative) => {
     return dataObj.date === latestUpdate && dataObj.area === selectedMunisipality.value;
   };
@@ -37,10 +38,12 @@ const Result: React.FC<{
   const womensQuery = (dataObj: GenderData) => {
     return dataObj.date === latestUpdate && dataObj.group === "Naiset";
   };
-  const ageGroup = getAgeGroup(selectedAge);
   const ageGroupsQuery = (dataObj: AgeGroupsData) => {
     return dataObj.date === latestUpdate && dataObj.group === ageGroup;
   };
+
+  const ageGroup = getAgeGroup(selectedAge);
+
   const singleDayMunicipalitiesInfections: MunicipalitiesInfectionsCumulative = municipalitiesInfectionsData.data.find(
     municipalitiesInfectionsQuery
   );
