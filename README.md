@@ -19,20 +19,19 @@
 ## Installation
 1. Clone the repo
    ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   git clone https://github.com/villeiivonen/covid-19.git
    ```
 3. Install YARN packages
    ```sh
    yarn
    ```
 
-<!-- USAGE EXAMPLES -->
 ## Usage
 1. Run at project root
    ```sh
    yarn dev
    ```
-<!-- LICENSE -->
+
 ## License
 
 Distributed under the MIT License. See `LICENSE` for more information.
