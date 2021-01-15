@@ -6,7 +6,6 @@ export const MainContainer = styled.div`
   margin: 0 auto;
   padding: 2em;
 `;
-
 export const StyledHeading = styled.h1`
   font-family: "Lato";
   font-size: 2em;
@@ -83,7 +82,6 @@ export const Input = styled.input`
     }
   }
 `;
-
 export const Label = styled.label`
   position: relative;
   font-family: "Lato";
@@ -103,15 +101,12 @@ export const SliderHandleStyle = {
   backgroundColor: "#FB695E",
   border: 0
 };
-
 export const SliderRailStyle = {
   height: 2
 };
-
 export const SliderTrackStyle = {
   background: "#FB695E"
 };
-
 export const SelectStyles = {
   control: (base: Record<string, unknown>): Record<string, unknown> => ({
     ...base,
