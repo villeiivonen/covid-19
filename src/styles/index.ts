@@ -15,17 +15,17 @@ export const StyledHeading = styled.h1`
   margin-bottom: 1em;
 `;
 export const SelectContainer = styled.div`
-  margin-bottom: 1em;
+  margin-bottom: 1.4em;
 `;
 export const StyledAge = styled.h1`
   font-family: "Lato";
   font-size: 1.8em;
   text-align: center;
   color: #fff;
-  margin-bottom: 0.8em;
+  margin-bottom: 0.6em;
 `;
 export const SliderContainer = styled.div`
-  margin-bottom: 1em;
+  margin-bottom: 1.6em;
 `;
 export const RadioButtonsContainer = styled.div`
   display: flex;

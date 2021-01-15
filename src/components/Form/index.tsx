@@ -161,18 +161,26 @@ const CovidCounter: React.FC = () => {
     const areaAverage = perhundredthousand / averagePerhundredthousand;
 
     console.log(menVsWoman + ageGroupVsAverage + areaAverage);
-    const averageOfAverage = (menVsWoman + ageGroupVsAverage + areaAverage) / 3 - 1;
-    const label = averageOfAverage < 0 ? "pienenpi" : "suurempi";
+    const averageOfAverage = Math.round(
+      ((menVsWoman + ageGroupVsAverage + areaAverage) / 3 - 1) * 10
+    );
+    let resultText =
+      averageOfAverage < 0
+        ? `Sinulla on ${Math.abs(averageOfAverage)}% pienempi todennäköisyys sairastua koronaan kuin
+    suomalaisella keskimäärin.`
+        : `Sinulla on ${Math.abs(averageOfAverage)}% suurempi todennäköisyys sairastua koronaan kuin
+        suomalaisella keskimäärin.`;
+    resultText =
+      averageOfAverage === 0
+        ? `Sinulla on yhtä suuri todennäköisyys sairastua koronaan kuin suomalaisella keskimäärin.`
+        : resultText;
     return (
       <>
-        <StyledHeading>
-          Sinulla on {Math.round(averageOfAverage * 10)}% {label} todennäköisyys sairastua koronaan
-          kuin Suomalaisella keskimäärin.
-        </StyledHeading>
+        <StyledHeading>{resultText}</StyledHeading>
         <StyledResulText>
           Suomessa tilastoitiin {singleDayAgeGroupsData.date} yhteensä{" "}
-          <UnderLine>{mensInfections + womensInfections}</UnderLine> uutta koronavirus tartuntaa.
-          Joista naisilla <UnderLine>{womensInfections}</UnderLine> tartuntaa ja miehillä{" "}
+          <UnderLine>{mensInfections + womensInfections}</UnderLine> uutta koronavirus tartuntaa,
+          joista naisilla <UnderLine>{womensInfections}</UnderLine> tartuntaa ja miehillä{" "}
           <UnderLine>{mensInfections}</UnderLine> tartuntaa. Ikäryhmässä {ageGroup} vuotiaat
           tartuntoja oli <UnderLine>{singleDayAgeGroupsData.value}</UnderLine> kappaletta. Kaikissa
           ikäluokissa tartuntoja ilmeni keskimäärin{" "}
@@ -194,7 +202,7 @@ const CovidCounter: React.FC = () => {
       <StyledHeading>Tutki kuinka todennäköisesti voit saada koronatartunnan</StyledHeading>
       <MunicipalitySelector />
       <>
-        <StyledAge>Olen {selectedAge} vuotias</StyledAge>
+        <StyledAge>Olen {selectedAge}-vuotias</StyledAge>
         <SliderContainer>
           <Slider
             value={selectedAge}
