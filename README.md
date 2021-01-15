@@ -3,7 +3,7 @@
 
 
 
-### Built With
+## Built With
 * react.js
 * TypeScript
 * Styled Components
@@ -16,7 +16,7 @@
   brew install yarn
   ```
 
-### Installation
+## Installation
 1. Clone the repo
    ```sh
    git clone https://github.com/your_username_/Project-Name.git
