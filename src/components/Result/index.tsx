@@ -1,7 +1,11 @@
 import React from "react";
 import moment from "moment";
 import {StyledHeading, StyledResulText, UnderLine} from "../../styles";
-import {getAveragePerhundredthousand, getAgeGroup} from "../../utils";
+import {
+  getAveragePerhundredthousand,
+  getMunicipalityAveragePerhundredthousand,
+  getAgeGroup
+} from "../../utils";
 import {
   MunicipalitiesInfectionsCumulative,
   MunicipalitiesInfectionsCumulativeResponse,
@@ -29,8 +33,19 @@ const Result: React.FC<{
 }) => {
   const latestUpdate = moment(municipalitiesInfectionsData.meta.timestamp).format("D.M.YYYY");
 
+  const regionInfectionsQuery = (dataObj: MunicipalitiesInfectionsCumulative) => {
+    return (
+      dataObj.date === latestUpdate &&
+      dataObj.area === selectedMunisipality.value &&
+      dataObj.perhundredthousand !== "0"
+    );
+  };
   const municipalitiesInfectionsQuery = (dataObj: MunicipalitiesInfectionsCumulative) => {
-    return dataObj.date === latestUpdate && dataObj.area === selectedMunisipality.value;
+    return (
+      dataObj.date === latestUpdate &&
+      dataObj.region === singleDayRegionInfections.region &&
+      dataObj.perhundredthousand !== "0"
+    );
   };
   const mensQuery = (dataObj: GenderData) => {
     return dataObj.date === latestUpdate && dataObj.group === "Miehet";
@@ -44,14 +59,19 @@ const Result: React.FC<{
 
   const ageGroup = getAgeGroup(selectedAge);
 
-  const singleDayMunicipalitiesInfections: MunicipalitiesInfectionsCumulative = municipalitiesInfectionsData.data.find(
+  const singleDayRegionInfections: MunicipalitiesInfectionsCumulative = municipalitiesInfectionsData.data.find(
+    regionInfectionsQuery
+  );
+
+  const singleDayMunicipalitiesInfections: MunicipalitiesInfectionsCumulative[] = municipalitiesInfectionsData.data.filter(
     municipalitiesInfectionsQuery
   );
 
   const averagePerhundredthousand = getAveragePerhundredthousand(municipalitiesInfectionsData);
-  const perhundredthousand = Math.round(
-    parseFloat(singleDayMunicipalitiesInfections.perhundredthousand) * 100000
+  const perhundredthousand = getMunicipalityAveragePerhundredthousand(
+    singleDayMunicipalitiesInfections
   );
+  console.log(singleDayMunicipalitiesInfections);
   const singleDayMensData: GenderData = genderData.data.find(mensQuery);
   const singleDayWomensData: GenderData = genderData.data.find(womensQuery);
   const singleDayAgeGroupsData: AgeGroupsData = ageGroupsData.data.find(ageGroupsQuery);
@@ -95,7 +115,7 @@ const Result: React.FC<{
         <UnderLine>{averageAgeGroupsInfections}</UnderLine> kappaletta.
       </StyledResulText>
       <StyledResulText>
-        Kotikuntasi sairaanhoitopiirin ({singleDayMunicipalitiesInfections.region}) suhteellinen
+        Kotikuntasi sairaanhoitopiirin ({singleDayMunicipalitiesInfections[0].region}) suhteellinen
         positiivisten tartuntojen määrä per 100 000 asukasta on{" "}
         <UnderLine>{perhundredthousand}</UnderLine>. Suomen sairaanhoitopiirien keskimääräinen
         positiivisten tartujoen määrä on <UnderLine>{averagePerhundredthousand}</UnderLine> per 100

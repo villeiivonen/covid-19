@@ -1,4 +1,7 @@
-import {MunicipalitiesInfectionsCumulativeResponse} from "../types/types";
+import {
+  MunicipalitiesInfectionsCumulativeResponse,
+  MunicipalitiesInfectionsCumulative
+} from "../types/types";
 export const queryFetcher = async <T>(url: string): Promise<T> => {
   try {
     const response = await fetch(url);
@@ -364,9 +367,26 @@ export const getAgeGroup = (age: number): string => {
 export const getAveragePerhundredthousand = (
   municipalitiesInfectionsData: MunicipalitiesInfectionsCumulativeResponse
 ): number => {
-  const allPerhundredthousand = municipalitiesInfectionsData.data.map((item) => {
+  let allPerhundredthousand = municipalitiesInfectionsData.data.map((item) => {
     return parseFloat(item.perhundredthousand);
   });
+  allPerhundredthousand = allPerhundredthousand.filter((val) => {
+    return val !== 0;
+  });
+  const averagePerhundredthousand = Math.round(
+    (sum(allPerhundredthousand) / allPerhundredthousand.length) * 100000
+  );
+  return averagePerhundredthousand;
+};
+
+export const getMunicipalityAveragePerhundredthousand = (
+  municipalitiesInfectionsData: MunicipalitiesInfectionsCumulative[]
+): number => {
+  const allPerhundredthousand = municipalitiesInfectionsData.map((item) => {
+    return parseFloat(item.perhundredthousand);
+  });
+
+  console.log(allPerhundredthousand);
   const averagePerhundredthousand = Math.round(
     (sum(allPerhundredthousand) / allPerhundredthousand.length) * 100000
   );
