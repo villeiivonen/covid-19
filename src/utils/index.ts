@@ -386,7 +386,6 @@ export const getMunicipalityAveragePerhundredthousand = (
     return parseFloat(item.perhundredthousand);
   });
 
-  console.log(allPerhundredthousand);
   const averagePerhundredthousand = Math.round(
     (sum(allPerhundredthousand) / allPerhundredthousand.length) * 100000
   );

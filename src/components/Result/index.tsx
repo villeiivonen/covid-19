@@ -34,11 +34,7 @@ const Result: React.FC<{
   const latestUpdate = moment(municipalitiesInfectionsData.meta.timestamp).format("D.M.YYYY");
 
   const regionInfectionsQuery = (dataObj: MunicipalitiesInfectionsCumulative) => {
-    return (
-      dataObj.date === latestUpdate &&
-      dataObj.area === selectedMunisipality.value &&
-      dataObj.perhundredthousand !== "0"
-    );
+    return dataObj.date === latestUpdate && dataObj.area === selectedMunisipality.value;
   };
   const municipalitiesInfectionsQuery = (dataObj: MunicipalitiesInfectionsCumulative) => {
     return (
@@ -71,7 +67,7 @@ const Result: React.FC<{
   const perhundredthousand = getMunicipalityAveragePerhundredthousand(
     singleDayMunicipalitiesInfections
   );
-  console.log(singleDayMunicipalitiesInfections);
+
   const singleDayMensData: GenderData = genderData.data.find(mensQuery);
   const singleDayWomensData: GenderData = genderData.data.find(womensQuery);
   const singleDayAgeGroupsData: AgeGroupsData = ageGroupsData.data.find(ageGroupsQuery);
@@ -85,20 +81,21 @@ const Result: React.FC<{
       ? mensInfections / womensInfections
       : womensInfections / mensInfections;
 
-  const ageGroupVsAverage = parseInt(singleDayAgeGroupsData.value) / averageAgeGroupsInfections;
+  const ageGroupVsAverageAgeGroup =
+    parseInt(singleDayAgeGroupsData.value) / averageAgeGroupsInfections;
   const areaAverage = perhundredthousand / averagePerhundredthousand;
 
-  const averageOfAverage = Math.round(
-    ((menVsWoman + ageGroupVsAverage + areaAverage) / 3 - 1) * 10
+  const probability = Math.abs(
+    Math.round(((menVsWoman + ageGroupVsAverageAgeGroup + areaAverage) / 3 - 1) * 10)
   );
   let resultText =
-    averageOfAverage < 0
-      ? `Sinulla on ${Math.abs(averageOfAverage)}% pienempi todennäköisyys sairastua koronaan kuin
+    probability < 0
+      ? `Sinulla on ${probability}% pienempi todennäköisyys sairastua koronaan kuin
     suomalaisella keskimäärin.`
-      : `Sinulla on ${Math.abs(averageOfAverage)}% suurempi todennäköisyys sairastua koronaan kuin
+      : `Sinulla on ${probability}% suurempi todennäköisyys sairastua koronaan kuin
         suomalaisella keskimäärin.`;
   resultText =
-    averageOfAverage === 0
+    probability === 0
       ? `Sinulla on yhtä suuri todennäköisyys sairastua koronaan kuin suomalaisella keskimäärin.`
       : resultText;
 
