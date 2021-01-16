@@ -12,16 +12,16 @@
 
 ## Prerequisites
 1. yarn
-  ```sh
-  brew install yarn
-  ```
+    ```sh
+    brew install yarn
+    ```
 
 ## Installation
 1. Clone the repo
    ```sh
    git clone https://github.com/villeiivonen/covid-19.git
    ```
-3. Install YARN packages
+2. Install YARN packages
    ```sh
    yarn
    ```
