@@ -106,7 +106,7 @@ const Result: React.FC<{
         Suomessa tilastoitiin {singleDayAgeGroupsData.date} yhteensä{" "}
         <UnderLine>{mensInfections + womensInfections}</UnderLine> uutta koronavirus tartuntaa,
         joista naisilla <UnderLine>{womensInfections}</UnderLine> tartuntaa ja miehillä{" "}
-        <UnderLine>{mensInfections}</UnderLine> tartuntaa. Ikäryhmässä {ageGroup} vuotiaat
+        <UnderLine>{mensInfections}</UnderLine> tartuntaa. Ikäryhmässä {ageGroup} -vuotiaat
         tartuntoja oli <UnderLine>{singleDayAgeGroupsData.value}</UnderLine> kappaletta. Kaikissa
         ikäluokissa tartuntoja ilmeni keskimäärin{" "}
         <UnderLine>{averageAgeGroupsInfections}</UnderLine> kappaletta.
@@ -115,8 +115,8 @@ const Result: React.FC<{
         Kotikuntasi sairaanhoitopiirin ({singleDayMunicipalitiesInfections[0].region}) suhteellinen
         positiivisten tartuntojen määrä per 100 000 asukasta on{" "}
         <UnderLine>{perhundredthousand}</UnderLine>. Suomen sairaanhoitopiirien keskimääräinen
-        positiivisten tartujoen määrä on <UnderLine>{averagePerhundredthousand}</UnderLine> per 100
-        000 asukasta.
+        positiivisten tartuntojen määrä on <UnderLine>{averagePerhundredthousand}</UnderLine> per
+        100 000 asukasta.
       </StyledResulText>
     </>
   );

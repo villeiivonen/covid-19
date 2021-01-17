@@ -373,9 +373,8 @@ export const getAveragePerhundredthousand = (
   allPerhundredthousand = allPerhundredthousand.filter((val) => {
     return val !== 0;
   });
-  const averagePerhundredthousand = Math.round(
-    (sum(allPerhundredthousand) / allPerhundredthousand.length) * 100000
-  );
+  const averagePerhundredthousand =
+    Math.round((sum(allPerhundredthousand) / allPerhundredthousand.length) * 10) / 10;
   return averagePerhundredthousand;
 };
 
@@ -385,20 +384,19 @@ export const getMunicipalityAveragePerhundredthousand = (
   const allPerhundredthousand = municipalitiesInfectionsData.map((item) => {
     return parseFloat(item.perhundredthousand);
   });
-
-  const averagePerhundredthousand = Math.round(
-    (sum(allPerhundredthousand) / allPerhundredthousand.length) * 100000
-  );
+  const averagePerhundredthousand =
+    Math.round((sum(allPerhundredthousand) / allPerhundredthousand.length) * 10) / 10;
   return averagePerhundredthousand;
 };
 
-const sum = (input) => {
+const sum = (input: number[]) => {
+  console.log(input);
   let total = 0;
   for (let i = 0; i < input.length; i++) {
     if (isNaN(input[i])) {
       continue;
     }
-    total += Number(input[i]);
+    total += Number(input[i]) * 100000;
   }
   return total;
 };
