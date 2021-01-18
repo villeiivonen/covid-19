@@ -390,7 +390,6 @@ export const getMunicipalityAveragePerhundredthousand = (
 };
 
 const sum = (input: number[]) => {
-  console.log(input);
   let total = 0;
   for (let i = 0; i < input.length; i++) {
     if (isNaN(input[i])) {
