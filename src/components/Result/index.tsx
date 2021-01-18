@@ -127,7 +127,7 @@ const Result: React.FC<{
       </StyledResulText>
       <StyledDisclaimer>
         <DisclaimerHeading>Tämän sivun tietojen lähteet ovat:</DisclaimerHeading>
-        <DisclaimerLink href="https://plus.yle.fi/lambda_sheets/korona/2020-08-municipality_infections/data.jso">
+        <DisclaimerLink href="https://plus.yle.fi/lambda_sheets/korona/2020-08-municipality_infections/data.json">
           https://plus.yle.fi/lambda_sheets/korona/2020-08-municipality_infections/data.json
         </DisclaimerLink>
         <DisclaimerLink href="https://plus.yle.fi/lambda_sheets/korona/2021-01-korona_sukupuoli/data.json">
