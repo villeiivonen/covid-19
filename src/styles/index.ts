@@ -93,6 +93,27 @@ export const Label = styled.label`
 export const UnderLine = styled.span`
   text-decoration: underline;
 `;
+
+export const StyledDisclaimer = styled.div`
+  margin-top: 3em;
+`;
+export const DisclaimerHeading = styled.p`
+  font-family: "Montserrat";
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 1em;
+`;
+export const DisclaimerLink = styled.a`
+  font-family: "Montserrat";
+  color: #fff;
+  font-size: 0.8em;
+  font-weight: 300;
+  text-align: center;
+  margin-bottom: 0.5em;
+  display: block;
+`;
 export const SliderHandleStyle = {
   height: 28,
   width: 28,

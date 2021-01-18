@@ -1,6 +1,13 @@
 import React from "react";
 import moment from "moment";
-import {StyledHeading, StyledResulText, UnderLine} from "../../styles";
+import {
+  StyledHeading,
+  StyledResulText,
+  UnderLine,
+  StyledDisclaimer,
+  DisclaimerHeading,
+  DisclaimerLink
+} from "../../styles";
 import {
   getAveragePerhundredthousand,
   getMunicipalityAveragePerhundredthousand,
@@ -104,7 +111,7 @@ const Result: React.FC<{
       <StyledHeading>{resultText}</StyledHeading>
       <StyledResulText>
         Suomessa tilastoitiin {singleDayAgeGroupsData.date} yhteensä{" "}
-        <UnderLine>{mensInfections + womensInfections}</UnderLine> uutta koronavirus tartuntaa,
+        <UnderLine>{mensInfections + womensInfections}</UnderLine> uutta koronavirustartuntaa,
         joista naisilla <UnderLine>{womensInfections}</UnderLine> tartuntaa ja miehillä{" "}
         <UnderLine>{mensInfections}</UnderLine> tartuntaa. Ikäryhmässä {ageGroup} -vuotiaat
         tartuntoja oli <UnderLine>{singleDayAgeGroupsData.value}</UnderLine> kappaletta. Kaikissa
@@ -118,6 +125,18 @@ const Result: React.FC<{
         positiivisten tartuntojen määrä on <UnderLine>{averagePerhundredthousand}</UnderLine> per
         100 000 asukasta.
       </StyledResulText>
+      <StyledDisclaimer>
+        <DisclaimerHeading>Tämän sivun tietojen lähteet ovat:</DisclaimerHeading>
+        <DisclaimerLink href="https://plus.yle.fi/lambda_sheets/korona/2020-08-municipality_infections/data.jso">
+          https://plus.yle.fi/lambda_sheets/korona/2020-08-municipality_infections/data.json
+        </DisclaimerLink>
+        <DisclaimerLink href="https://plus.yle.fi/lambda_sheets/korona/2021-01-korona_sukupuoli/data.json">
+          https://plus.yle.fi/lambda_sheets/korona/2021-01-korona_sukupuoli/data.json
+        </DisclaimerLink>
+        <DisclaimerLink href="https://plus.yle.fi/lambda_sheets/korona/2021-01-korona_ikaryhma/data.json">
+          https://plus.yle.fi/lambda_sheets/korona/2021-01-korona_ikaryhma/data.json
+        </DisclaimerLink>
+      </StyledDisclaimer>
     </>
   );
 };
